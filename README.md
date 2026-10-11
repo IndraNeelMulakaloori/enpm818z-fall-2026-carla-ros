@@ -11,6 +11,7 @@ ROS 2 packages for ENPM818Z.
 | `l5_box_demo` | The lecture 5 3D Detection hands-on: 3D boxes (center, size, heading mod 180 deg) from the bridge's LiDAR with no learning, by clustering and L-shape fitting, graded against CARLA's true boxes; can feed `l5_tracking_demo` (`source:=boxes`). See its README. |
 | `l5_seg_demo` | The lecture 5 Segmentation hands-on: semantic segmentation of the bridge's front camera by a trained network (SegFormer-B0, Cityscapes), graded pixel by pixel against CARLA's semantic camera mounted at the same place (IoU per class, mIoU); optional YOLOv8s-seg instance masks; can give `l5_bev_demo` the network's classes (`labels:=network`). Needs `pip install transformers`. See its README. |
 | `gp1_starter/ads_pipeline` | **The GP1 starter.** The cumulative ADS pipeline that GP1 through GP4 build out. Copy it into your team repository; this copy carries a `COLCON_IGNORE` and is never built here. |
+| `gp2_starter/ads_pipeline` | **The GP2 starter.** The files GP2 adds to your GP1 package: ground truth, the detector node, detector grading and an image tracker, with tests and tools. Copy them into your team's `ads_pipeline`; this copy carries a `COLCON_IGNORE` and is never built here. |
 
 ## Build
 
@@ -51,6 +52,21 @@ it next to this repo's copy of `l2_carla_demo`.
 
 Nothing here is a solution. Every function that raises
 `NotImplementedError` is deliberate.
+
+## For GP2
+
+GP2 adds files to the package your team built in GP1. Copy the contents of
+`gp2_starter/ads_pipeline/` into your team's `ads_pipeline/`; the GP2 page
+shows the exact commands, the two lines to add to `setup.py` and
+`package.xml`, and the pip installs.
+
+| Given | Yours |
+|---|---|
+| `tools/record_gp2.py`: records a drive with your GP1 camera rig (RGB, depth, semantic, and the actors' 3D boxes) | `gt_boxes.py`: `project_points`, `box_from_corners`, `actor_pixels` (Task 1) |
+| `gt_boxes.py`: frame loader, near-plane clipping, the frame-level assembly | `detector_core.py`: `load_model`, `predict`; `detector_node.py`: `to_detection_array` (Task 2) |
+| `detector_node.py`: the node; `launch/perception_launch.py`: every parameter a launch argument | `detection_eval.py`: `match_frame`, `pr_curve`, `average_precision`, `mean_ap` (Task 3) |
+| `tools/run_detector.py`, `grade.py`, `check_coco.py`, `show_frame.py` | `box_tracker.py`: `BoxKalman`, `iou_cost`, `associate`, `BoxTracker.step` (Task 4) |
+| `test/test_gp2_*.py`: the checks for every function you write | the report (Task 5) |
 
 ## Before you start
 
