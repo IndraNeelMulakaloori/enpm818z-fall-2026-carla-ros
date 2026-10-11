@@ -49,7 +49,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[1])
     ap.add_argument('--rec', required=True)
     ap.add_argument('--conf', type=float, default=0.5,
-                    help='confidence cut for the tracker (your choice, Task 5)')
+                    help='confidence cut for the tracker (your choice, Task 4)')
     a = ap.parse_args()
     rec = Path(a.rec)
 

@@ -34,7 +34,9 @@ def test_detection_array():
 
 
 def test_launch_declares_every_parameter():
-    pytest.importorskip('launch')
+    # launch.actions, not launch: this package's own launch/ folder would
+    # satisfy a plain 'launch' import, and the skip would never happen.
+    pytest.importorskip('launch.actions')
     import importlib.util
     from pathlib import Path
     from launch.actions import DeclareLaunchArgument

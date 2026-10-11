@@ -4,7 +4,8 @@
     ros2 launch ads_pipeline perception_launch.py model_type:=detr weights:=/path/rtdetr-l.pt
 
 Every parameter is a declared launch argument, so a value given on the
-command line reaches the node. Start your GP1 sensors_launch.py first.
+command line reaches the node. Play a drive first with
+tools/replay_drive.py, which publishes your GP1 camera's topic.
 """
 
 from launch import LaunchDescription
