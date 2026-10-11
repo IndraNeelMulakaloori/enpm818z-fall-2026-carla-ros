@@ -58,14 +58,15 @@ Nothing here is a solution. Every function that raises
 GP2 adds files to the package your team built in GP1. Copy the contents of
 `gp2_starter/ads_pipeline/` into your team's `ads_pipeline/`; the GP2 page
 shows the exact commands, the two lines to add to `setup.py` and
-`package.xml`, and the pip installs.
+`package.xml`, and the pip installs. Your team's two recorded drives are
+given (download link on Canvas): GP2 needs no CARLA.
 
 | Given | Yours |
 |---|---|
-| `tools/record_gp2.py`: records a drive with your GP1 camera rig (RGB, depth, semantic, and the actors' 3D boxes) | `gt_boxes.py`: `project_points`, `box_from_corners`, `actor_pixels` (Task 1) |
-| `gt_boxes.py`: frame loader, near-plane clipping, the frame-level assembly | `detector_core.py`: `load_model`, `predict`; `detector_node.py`: `to_detection_array` (Task 2) |
+| `tools/record_gp2.py`: how your drives were recorded (RGB, depth, semantic, and the actors' 3D boxes); you do not need to run it | `gt_boxes.py`: `project_points`, `box_from_corners`, `actor_pixels` (Task 1) |
+| `gt_boxes.py`: frame loader, walker margin, near-plane clipping, the frame-level assembly | `detector_core.py`: `load_model`, `predict`; `detector_node.py`: `to_detection_array` (Task 2) |
 | `detector_node.py`: the node; `launch/perception_launch.py`: every parameter a launch argument | `detection_eval.py`: `match_frame`, `pr_curve`, `average_precision`, `mean_ap` (Task 3) |
-| `tools/run_detector.py`, `grade.py`, `check_coco.py`, `show_frame.py` | `box_tracker.py`: `BoxKalman`, `iou_cost`, `associate`, `BoxTracker.step` (Task 4) |
+| `tools/run_detector.py`, `grade.py`, `check_coco.py`, `show_frame.py`, `replay_drive.py` (a drive played as the camera topic, for the live node) | `box_tracker.py`: `BoxKalman`, `iou_cost`, `associate`, `BoxTracker.step` (Task 4) |
 | `test/test_gp2_*.py`: the checks for every function you write | the report (Task 5) |
 
 ## Before you start
